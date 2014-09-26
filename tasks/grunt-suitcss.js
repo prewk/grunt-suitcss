@@ -31,7 +31,7 @@ module.exports = function() {
       resolveOpts: {
         install: true
       },
-      preprocessorOpts: {}
+      preprocessOpts: {}
     });
 
     // Ensure always verbose for CLI output
@@ -183,9 +183,9 @@ function conform(string) {
  * @param string
  * @returns {String}
  */
-function preprocess(string, preprocessorOpts) {
+function preprocess(string, preprocessOpts) {
   if (_.isString(string)) {
-    return suitcss(string, preprocessorOpts);
+    return suitcss(string, preprocessOpts);
   }
 }
 
@@ -197,7 +197,7 @@ function writeFile(dest, files) {
   var file = files.join(grunt.util.normalizelf(options.separator));
 
   if (options.preprocess) {
-    file = preprocess(file, options.preprocessorOpts);
+    file = preprocess(file, options.preprocessOpts);
   }
 
   grunt.file.write(dest, file);
